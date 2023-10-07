@@ -1,8 +1,9 @@
 import ws from '@fastify/websocket';
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
 import fastify from 'fastify';
-import { appRouter } from './router';
-import { createContext } from './router/context';
+import { appRouter } from '../router';
+import { createContext } from '../router/context';
+import cors from '@fastify/cors';
 
 export interface ServerOptions {
   dev?: boolean;
@@ -16,6 +17,9 @@ export function createServer(opts: ServerOptions) {
   const prefix = opts.prefix ?? '/trpc';
   const server = fastify({ logger: dev });
 
+  void server.register(cors, {
+    origin: true,
+  });
   void server.register(ws);
   void server.register(fastifyTRPCPlugin, {
     prefix,
@@ -23,7 +27,7 @@ export function createServer(opts: ServerOptions) {
     trpcOptions: { router: appRouter, createContext },
   });
 
-  server.get('/', async () => {
+  server.get('/', async (): Promise<any> => {
     return { hello: 'wait-on 💨' };
   });
 

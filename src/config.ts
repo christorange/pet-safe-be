@@ -1,7 +1,6 @@
 import type { ServerOptions } from './server/server';
 
 export const serverConfig: ServerOptions = {
-  dev: false,
-  port: 2022,
+  port: 3475,
   prefix: '/trpc',
 };

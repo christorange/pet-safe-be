@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Export tRPC API",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "dist",
+    "baseUrl": "../../src",
+    "paths": {
+      ".": ["."]
+    },
+    "allowJs": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "pretty": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext"
+  },
+  "exclude": ["../../build", "../node_modules"]
+}
