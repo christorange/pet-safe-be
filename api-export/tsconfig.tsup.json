@@ -17,8 +17,8 @@
     "isolatedModules": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext"
+    "moduleResolution": "node",
+    "module": "CommonJS"
   },
   "exclude": ["../../build", "../node_modules"]
 }

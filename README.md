@@ -1,14 +1,34 @@
 # PetSafe Backend
 
 - Fastify server with WebSocket
-- Simple tRPC client in node
+- tRPC APIs
 - Prisma as ORM
 
-start server:
+## API development:
+Start server:
 ```
-pnpm run dev
+npm run dev
 ```
 
+After each API modification, run
+```
+npx api-export
+```
+to build the tRPC API router types output, so the frontend can consume it.
 
+## Database changes:
 
+Schema GUI:
+```
+npx prisma studio
+```
 
+Push schema changes:
+```
+npx prisma db push
+```
+
+Pull schema changes:
+```
+npx prisma db pull
+```
