@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "esbuild src/server/index.ts src/client/index.ts --bundle --packages=external --platform=node --format=esm --outdir=build --sourcemap",
+    "build": "esbuild src/server/index.ts --bundle --packages=external --platform=node --format=esm --outdir=build --sourcemap",
     "dev": "tsx watch src/server",
     "lint": "eslint --cache --ext \".js,.ts,.tsx\" --report-unused-disable-directives src",
     "type-check": "tsc",
-    "start:server": "node build/server/index.js",
+    "start": "node build/index.js",
     "api-export": "tsup --config api-export/tsup.config.ts"
   },
   "dependencies": {
