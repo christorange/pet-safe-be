@@ -16,9 +16,14 @@ npx api-export
 ```
 to build the tRPC API router types output, so the frontend can consume it.
 
-## Database changes:
+## Database operations:
 
 [CLI reference](https://www.prisma.io/docs/reference/api-reference/command-reference)
+
+Create a `.env` in the root directory, add database url as:
+```
+DATABASE_URL = ...
+```
 
 Schema GUI:
 ```
