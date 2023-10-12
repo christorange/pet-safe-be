@@ -5,6 +5,14 @@
 - [Prisma](https://www.prisma.io/docs/getting-started) as ORM
 
 ## API development:
+Prereq for starting server: Set up DATABASE_URL and Install All the (dev)dependencies Using 
+```
+npm install
+```
+ or
+```
+pnpm install
+```
 Start server:
 ```
 npm run dev
