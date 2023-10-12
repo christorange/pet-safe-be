@@ -5,6 +5,7 @@ import { appRouter } from '../router';
 import { createContext } from '../router/context';
 import cors from '@fastify/cors';
 
+
 export interface ServerOptions {
   dev?: boolean;
   port?: number;
@@ -27,21 +28,32 @@ export function createServer(opts: ServerOptions) {
     trpcOptions: { router: appRouter, createContext },
   });
 
-  server.get('/', async (): Promise<any> => {
-    return { hello: 'wait-on 💨' };
+  server.get('/', (request, reply) => {
+    reply
+      .code(200)
+      .header('Content-Type', 'text/html; charset=utf-8')
+      .send(`<h1>PetSafe Backend</h1>`);
   });
 
   const stop = async () => {
     await server.close();
   };
   const start = async () => {
-    try {
-      await server.listen({ port });
+    // try {
+    //   await server.listen({ port });
+    //   console.log('listening on port', port);
+    // } catch (err) {
+    //   server.log.error(err);
+    //   process.exit(1);
+    // }
+    server.listen({port}, (err, address) => {
+      if (err) {
+        server.log.error(err);
+        process.exit(1);
+      }
+      // server.log.info('server listening on', address);
       console.log('listening on port', port);
-    } catch (err) {
-      server.log.error(err);
-      process.exit(1);
-    }
+    });
   };
 
   return { server, start, stop };
