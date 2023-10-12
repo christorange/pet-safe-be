@@ -14,7 +14,7 @@ export interface ServerOptions {
 
 export function createServer(opts: ServerOptions) {
   const dev = opts.dev ?? true;
-  const port = opts.port ?? 3000;
+  const port = parseInt(process.env.PORT as string, 10) || 3000;
   const prefix = opts.prefix ?? '/trpc';
   const server = fastify({ logger: dev });
 
@@ -39,21 +39,14 @@ export function createServer(opts: ServerOptions) {
     await server.close();
   };
   const start = async () => {
-    // try {
-    //   await server.listen({ port });
-    //   console.log('listening on port', port);
-    // } catch (err) {
-    //   server.log.error(err);
-    //   process.exit(1);
-    // }
-    server.listen({port}, (err, address) => {
-      if (err) {
-        server.log.error(err);
-        process.exit(1);
-      }
-      // server.log.info('server listening on', address);
+    try {
+      await server.listen({ port });
       console.log('listening on port', port);
-    });
+    } catch (err) {
+      server.log.error(err);
+      process.exit(1);
+    }
+
   };
 
   return { server, start, stop };
