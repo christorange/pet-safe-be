@@ -4,15 +4,15 @@
 - [tRPC](https://trpc.io/docs) APIs
 - [Prisma](https://www.prisma.io/docs/getting-started) as ORM
 
-## API development:
-Prereq for starting server: Set up DATABASE_URL and Install All the (dev)dependencies Using 
+## Development:
+
+Install dependencies with `pnpm i`.
+
+Create a `.env` in the root directory, add database url as:
 ```
-npm install
+DATABASE_URL = ...
 ```
- or
-```
-pnpm install
-```
+
 Start server:
 ```
 npm run dev
@@ -27,11 +27,7 @@ to build the tRPC API router types output, so the frontend can consume it.
 ## Database operations:
 
 [CLI reference](https://www.prisma.io/docs/reference/api-reference/command-reference)
-
-Create a `.env` in the root directory, add database url as:
-```
-DATABASE_URL = ...
-```
+[Prisma concepts](https://www.prisma.io/docs/concepts/overview/what-is-prisma)
 
 Schema GUI:
 ```
