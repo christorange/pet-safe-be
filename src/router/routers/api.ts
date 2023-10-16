@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { publicProcedure, router } from '../trpc';
 
+
 export const apiRouter = router({
   version: publicProcedure.query(() => {
     return { version: '0.42.0' };
@@ -12,4 +13,7 @@ export const apiRouter = router({
         text: `hello ${input?.username ?? ctx.user?.name ?? 'world'}`,
       };
     }),
+  echo: publicProcedure.query(({ input, ctx }) => {
+    return input;
+  }),
 });
