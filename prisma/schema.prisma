@@ -19,8 +19,8 @@ model pet_friendly_places {
   id        Int      @id @default(autoincrement())
   name      String
   address   String
-  longitude Float
   latitude  Float
+  longitude Float
   type      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

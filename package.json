@@ -24,6 +24,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/geojson": "^7946.0.11",
     "@types/node": "^18.16.16",
     "@types/ws": "^8.2.0",
     "esbuild": "^0.17.10",

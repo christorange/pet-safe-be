@@ -1,13 +1,13 @@
 import { z } from 'zod';
 import { publicProcedure, router } from '../trpc';
 import prisma from '../../utils/prisma';
-import { IGeojson } from '../../utils/types';
+import type { FeatureCollection } from 'geojson';
 
 export const placesRouter = router({
   allPlaces: publicProcedure.query(async () => {
     const res = await prisma.pet_friendly_places.findMany();
 
-    const geojson: IGeojson = {
+    const geojson: FeatureCollection = {
       type: "FeatureCollection",
       features: res.map(e=>({
         type: "Feature",
