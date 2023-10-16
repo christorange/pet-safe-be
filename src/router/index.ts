@@ -1,8 +1,13 @@
 import { apiRouter } from './routers/api';
+import { placesRouter } from './routers/places';
 import { router } from './trpc';
 
-export const appRouter = router({
+const appRouter = router({
   api: apiRouter,
-});
+  places: placesRouter
+})
+type AppRouter = typeof appRouter;
 
-export type AppRouter = typeof appRouter;
+export default appRouter;
+export type { AppRouter };
+
