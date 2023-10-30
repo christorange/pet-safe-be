@@ -20,7 +20,7 @@ npm run dev
 
 After each API modification, run
 ```
-npx api-export
+npm run api-export
 ```
 to build the tRPC API router types output, so the frontend can consume it.
 
