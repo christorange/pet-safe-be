@@ -1,4 +1,3 @@
-import ws from '@fastify/websocket';
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
 import fastify from 'fastify';
 import appRouter from '../router';
@@ -19,9 +18,8 @@ export function createServer(opts: ServerOptions) {
   const server = fastify({ logger: dev });
 
   void server.register(cors, {
-    origin: true,
+    origin: /\.vercel\.app$/,
   });
-  void server.register(ws);
   void server.register(fastifyTRPCPlugin, {
     prefix,
     useWSS: true,
