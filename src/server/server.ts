@@ -20,6 +20,8 @@ export function createServer(opts: ServerOptions) {
 
   void server.register(cors, {
     origin: true,
+    methods: ['GET', 'PUT', 'POST', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   });
   void server.register(ws);
   void server.register(fastifyTRPCPlugin, {
