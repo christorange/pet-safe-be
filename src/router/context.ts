@@ -6,9 +6,9 @@ export interface User {
 }
 
 export function createContext({ req, res }: CreateFastifyContextOptions) {
-  const user: User = { name: req.headers.username ?? 'anonymous' };
+  res.header('Access-Control-Allow-Origin','*')
 
-  return { req, res, user };
+  return { req, res };
 }
 
 export type Context = inferAsyncReturnType<typeof createContext>;
