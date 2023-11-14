@@ -19,7 +19,7 @@ export function createServer(opts: ServerOptions) {
   const server = fastify({ logger: dev });
 
   void server.register(cors, {
-    origin: [/\.railway\.app$/, /\.vercel\.app$/],
+    origin: true,
   });
   void server.register(ws);
   void server.register(fastifyTRPCPlugin, {
