@@ -12,17 +12,12 @@ export interface ServerOptions {
   prefix?: string;
 }
 
-export function createServer(opts: ServerOptions) {
-  const dev = opts.dev ?? true;
+export function createServer() {
   const port = parseInt(process.env.PORT as string, 10) || 3475;
-  const prefix = opts.prefix ?? '/trpc';
-  const server = fastify({ logger: dev });
+  const prefix = '/trpc';
+  const server = fastify({ logger: true });
 
-  void server.register(cors, {
-    origin: true,
-    methods: ['GET', 'PUT', 'POST', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
-  });
+  void server.register(cors);
   void server.register(ws);
   void server.register(fastifyTRPCPlugin, {
     prefix,

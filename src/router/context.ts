@@ -6,7 +6,6 @@ export interface User {
 }
 
 export function createContext({ req, res }: CreateFastifyContextOptions) {
-  res.header('Access-Control-Allow-Origin','*')
 
   return { req, res };
 }
