@@ -31,8 +31,10 @@ export function createServer() {
 
   server.addHook('preHandler',(req, res, done)=>{
     if(req.routerPath === '*' && req.routerMethod === 'OPTIONS') {
-      return done();
+      return res.send();
     }
+
+    done();
   })
 
   server.get('/', (request, reply) => {
