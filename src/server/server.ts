@@ -17,7 +17,10 @@ export function createServer() {
   const prefix = '/trpc';
   const server = fastify({ logger: true });
 
-  void server.register(cors);
+  void server.register(cors, {
+    origin: true,
+    strictPreflight: false
+  });
   void server.register(ws);
   void server.register(fastifyTRPCPlugin, {
     prefix,
