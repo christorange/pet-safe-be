@@ -21,12 +21,19 @@ export function createServer() {
     origin: true,
     strictPreflight: false
   });
+
   void server.register(ws);
   void server.register(fastifyTRPCPlugin, {
     prefix,
     useWSS: true,
     trpcOptions: { router: appRouter, createContext },
   });
+
+  server.addHook('preHandler',(req, res, done)=>{
+    if(req.routerPath === '*' && req.routerMethod === 'OPTIONS') {
+      return done();
+    }
+  })
 
   server.get('/', (request, reply) => {
     reply
