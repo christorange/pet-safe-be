@@ -8,9 +8,9 @@ export const apiRouter = router({
   }),
   hello: publicProcedure
     .input(z.object({ username: z.string().nullish() }).nullish())
-    .query(({ input, ctx }) => {
+    .query(({ input }) => {
       return {
-        text: `hello ${input?.username ?? ctx.user?.name ?? 'world'}`,
+        text: `hello ${input?.username ?? 'world'}`,
       };
     }),
   echo: publicProcedure.query(({ input, ctx }) => {

@@ -17,10 +17,9 @@ export function createServer() {
   const prefix = '/trpc';
   const server = fastify({ logger: true });
 
-  // void server.register(cors, {
-  //   origin: true,
-  //   strictPreflight: false
-  // });
+  void server.register(cors, {
+    origin: true,
+  });
 
   void server.register(ws);
   void server.register(fastifyTRPCPlugin, {
@@ -29,17 +28,17 @@ export function createServer() {
     trpcOptions: { router: appRouter, createContext },
   });
 
-  server.addHook('preHandler',(req, res, done)=>{
-    const origin = req.headers.origin ?? ''
-    res.header('Access-Control-Allow-Origin', origin)
-    res.header('Access-Control-Allow-Methods', '*')
-    res.header('Access-Control-Allow-Headers', '*')
-    if(req.method === 'OPTIONS') {
-      return res.send();
-    }
+  // server.addHook('preHandler',(req, res, done)=>{
+  //   const origin = req.headers.origin ?? ''
+  //   res.header('Access-Control-Allow-Origin', origin)
+  //   res.header('Access-Control-Allow-Methods', '*')
+  //   res.header('Access-Control-Allow-Headers', '*')
+  //   if(req.method === 'OPTIONS') {
+  //     return res.send();
+  //   }
 
-    done();
-  })
+  //   done();
+  // })
 
   server.get('/', (request, reply) => {
     reply
