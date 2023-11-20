@@ -12,15 +12,15 @@ const userSchema = z.object({
   email: z.string(),
 });
 
-const userUpdateSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.string(),
-});
+// const userUpdateSchema = z.object({
+//   id: z.string(),
+//   name: z.string(),
+//   email: z.string(),
+// });
 
 export const userRouter = router({
   //get all users
-  getAll: publicProcedure.query(async () => {
+  getAll: publicProcedure.query(({}) => {
     return prisma.user.findMany();
   }),
 
@@ -43,23 +43,23 @@ export const userRouter = router({
     }),
 
   //update user
-  updateUser: publicProcedure
-    .input(userUpdateSchema)
-    .mutation(({ input }) => {
-      return prisma.user.update({
-        where: {
-          id: input.id.toString(),
-        },
-        data: userUpdateSchema.parse(input),
-      });
-    }),
+  // updateUser: publicProcedure
+  //   .input(userUpdateSchema)
+  //   .mutation(({ input }) => {
+  //     return prisma.user.update({
+  //       where: {
+  //         id: input.id.toString(),
+  //       },
+  //       data: userUpdateSchema.parse(input),
+  //     });
+  //   }),
 
   //delete user
-  deleteUser: publicProcedure
-    .input(idSchema)
-    .mutation(({ input }) => {
-      return prisma.user.delete({
-        where: idSchema.parse(input),
-      });
-    }),
+  // deleteUser: publicProcedure
+  //   .input(idSchema)
+  //   .mutation(({ input }) => {
+  //     return prisma.user.delete({
+  //       where: idSchema.parse(input),
+  //     });
+  //   }),
 });
