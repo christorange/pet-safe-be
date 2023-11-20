@@ -4,36 +4,62 @@ import prisma from '../../utils/prisma';
 import { Public } from '@prisma/client/runtime/library';
 
 
-const idValue = 'user_2XdC1teyjoM23zWSd0sglh1cD0w';
-const emailval = 'nathanielcrush51@gmail.com'
+const idSchema = z.object({ id: z.string() });
+
+const userSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string(),
+});
+
+const userUpdateSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string(),
+});
+
 export const userRouter = router({
-  
-    sendUser: publicProcedure.mutation(async () => {
-        const user = await prisma.user.findFirst({
-            where: {
-              AND: { id: idValue } // idValue=ClerkUser.id
-            }
-          });
-        
-          if (!user) {
-           //create a new record in postgres    
-           await prisma.user.upsert({
-            where: { id: idValue as string },
-            update: {}, // Define update fields if needed when the user already exists
-            create: {
-              id: idValue,
-              email: emailval
-            },
-            // pdate: { attributes },
-          });
-          } 
+  //get all users
+  getAll: publicProcedure.query(async () => {
+    return prisma.user.findMany();
+  }),
+
+  //get user by id
+  getOne: publicProcedure
+    .input(idSchema)
+    .query(({ input }) => {
+      return prisma.user.findUnique({
+        where: idSchema.parse(input),
+      });
     }),
 
-    users: publicProcedure.query(async () => {
-      const res = await prisma.user.findMany(
-      );
-      return res;
-    })
+  //create user
+  createUser: publicProcedure
+    .input(userSchema)
+    .mutation(({ input }) => {
+      return prisma.user.create({
+        data: userSchema.parse(input),
+      });
+    }),
 
+  //update user
+  updateUser: publicProcedure
+    .input(userUpdateSchema)
+    .mutation(({ input }) => {
+      return prisma.user.update({
+        where: {
+          id: input.id.toString(),
+        },
+        data: userUpdateSchema.parse(input),
+      });
+    }),
 
+  //delete user
+  deleteUser: publicProcedure
+    .input(idSchema)
+    .mutation(({ input }) => {
+      return prisma.user.delete({
+        where: idSchema.parse(input),
+      });
+    }),
 });

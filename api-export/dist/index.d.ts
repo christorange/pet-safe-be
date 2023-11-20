@@ -225,6 +225,181 @@ declare const appRouter: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<
             _meta: object;
         }, geojson.FeatureCollection<geojson.Geometry, geojson.GeoJsonProperties>>;
     }>;
+    user: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<{
+        ctx: {
+            req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+            res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+            user: User;
+        };
+        meta: object;
+        errorShape: _trpc_server.DefaultErrorShape;
+        transformer: typeof superjson.default;
+    }>, {
+        getAll: _trpc_server.BuildProcedure<"query", {
+            _config: _trpc_server.RootConfig<{
+                ctx: {
+                    req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                    res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+                    user: User;
+                };
+                meta: object;
+                errorShape: _trpc_server.DefaultErrorShape;
+                transformer: typeof superjson.default;
+            }>;
+            _ctx_out: {
+                req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+                user: User;
+            };
+            _input_in: typeof _trpc_server.unsetMarker;
+            _input_out: typeof _trpc_server.unsetMarker;
+            _output_in: typeof _trpc_server.unsetMarker;
+            _output_out: typeof _trpc_server.unsetMarker;
+            _meta: object;
+        }, {
+            id: string;
+            email: string;
+            name: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+        }[]>;
+        getOne: _trpc_server.BuildProcedure<"query", {
+            _config: _trpc_server.RootConfig<{
+                ctx: {
+                    req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                    res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+                    user: User;
+                };
+                meta: object;
+                errorShape: _trpc_server.DefaultErrorShape;
+                transformer: typeof superjson.default;
+            }>;
+            _meta: object;
+            _ctx_out: {
+                req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+                user: User;
+            };
+            _input_in: {
+                id: string;
+            };
+            _input_out: {
+                id: string;
+            };
+            _output_in: typeof _trpc_server.unsetMarker;
+            _output_out: typeof _trpc_server.unsetMarker;
+        }, {
+            id: string;
+            email: string;
+            name: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+        } | null>;
+        createUser: _trpc_server.BuildProcedure<"mutation", {
+            _config: _trpc_server.RootConfig<{
+                ctx: {
+                    req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                    res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+                    user: User;
+                };
+                meta: object;
+                errorShape: _trpc_server.DefaultErrorShape;
+                transformer: typeof superjson.default;
+            }>;
+            _meta: object;
+            _ctx_out: {
+                req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+                user: User;
+            };
+            _input_in: {
+                name: string;
+                id: string;
+                email: string;
+            };
+            _input_out: {
+                name: string;
+                id: string;
+                email: string;
+            };
+            _output_in: typeof _trpc_server.unsetMarker;
+            _output_out: typeof _trpc_server.unsetMarker;
+        }, {
+            id: string;
+            email: string;
+            name: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+        }>;
+        updateUser: _trpc_server.BuildProcedure<"mutation", {
+            _config: _trpc_server.RootConfig<{
+                ctx: {
+                    req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                    res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+                    user: User;
+                };
+                meta: object;
+                errorShape: _trpc_server.DefaultErrorShape;
+                transformer: typeof superjson.default;
+            }>;
+            _meta: object;
+            _ctx_out: {
+                req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+                user: User;
+            };
+            _input_in: {
+                name: string;
+                id: string;
+                email: string;
+            };
+            _input_out: {
+                name: string;
+                id: string;
+                email: string;
+            };
+            _output_in: typeof _trpc_server.unsetMarker;
+            _output_out: typeof _trpc_server.unsetMarker;
+        }, {
+            id: string;
+            email: string;
+            name: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+        }>;
+        deleteUser: _trpc_server.BuildProcedure<"mutation", {
+            _config: _trpc_server.RootConfig<{
+                ctx: {
+                    req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                    res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+                    user: User;
+                };
+                meta: object;
+                errorShape: _trpc_server.DefaultErrorShape;
+                transformer: typeof superjson.default;
+            }>;
+            _meta: object;
+            _ctx_out: {
+                req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+                user: User;
+            };
+            _input_in: {
+                id: string;
+            };
+            _input_out: {
+                id: string;
+            };
+            _output_in: typeof _trpc_server.unsetMarker;
+            _output_out: typeof _trpc_server.unsetMarker;
+        }, {
+            id: string;
+            email: string;
+            name: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+        }>;
+    }>;
 }>;
 type AppRouter = typeof appRouter;
 

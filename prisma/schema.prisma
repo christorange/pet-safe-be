@@ -25,3 +25,10 @@ model pet_friendly_places {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model usersavedplaces {
+  saved_id Int       @id @default(autoincrement())
+  user_id  Int?
+  place_id Int       @default(autoincrement())
+  saved_at DateTime? @db.Date
+}
