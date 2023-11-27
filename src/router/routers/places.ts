@@ -18,7 +18,8 @@ export const placesRouter = router({
         properties: {
           id: e.id,
           name: e.name,
-          address: e.address
+          address: e.address,
+          type: e.type
         }
       }))
     }
