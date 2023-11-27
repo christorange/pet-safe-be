@@ -13,7 +13,7 @@ export const placesRouter = router({
         type: "Feature",
         geometry: {
           type: "Point",
-          coordinates: [e.longitude, e.latitude]
+          coordinates: [e.longitude as number, e.latitude as number]
         },
         properties: {
           id: e.id,
@@ -40,7 +40,7 @@ export const placesRouter = router({
         type: "Feature",
         geometry: {
           type: "Point",
-          coordinates: [e.longitude, e.latitude]
+          coordinates: [e.longitude as number, e.latitude as number]
         },
         properties: {
           id: e.id,
@@ -68,7 +68,7 @@ export const placesRouter = router({
         type: "Feature",
         geometry: {
           type: "Point",
-          coordinates: [e.longitude, e.latitude]
+          coordinates: [e.longitude as number, e.latitude as number]
         },
         properties: {
           id: e.id,
@@ -96,7 +96,7 @@ export const placesRouter = router({
         type: "Feature",
         geometry: {
           type: "Point",
-          coordinates: [e.longitude, e.latitude]
+          coordinates: [e.longitude as number, e.latitude as number]
         },
         properties: {
           id: e.id,
@@ -124,7 +124,7 @@ export const placesRouter = router({
         type: "Feature",
         geometry: {
           type: "Point",
-          coordinates: [e.longitude, e.latitude]
+          coordinates: [e.longitude as number, e.latitude as number]
         },
         properties: {
           id: e.id,
