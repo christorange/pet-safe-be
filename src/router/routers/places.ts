@@ -9,7 +9,7 @@ export const placesRouter = router({
 
     const geojson: FeatureCollection = {
       type: "FeatureCollection",
-      features: res.map(e=>({
+      features: res.map(e =>({
         type: "Feature",
         geometry: {
           type: "Point",
@@ -18,7 +18,10 @@ export const placesRouter = router({
         properties: {
           id: e.id,
           name: e.name,
-          address: e.address
+          address: e.address,
+          type: e.type,
+          rating: e.rating,
+          photo: e.photo
         }
       }))
     }
@@ -46,7 +49,9 @@ export const placesRouter = router({
           id: e.id,
           name: e.name,
           address: e.address,
-          type: e.type
+          type: e.type,
+          rating: e.rating,
+          photo: e.photo
         }
       }))
     }
@@ -74,7 +79,9 @@ export const placesRouter = router({
           id: e.id,
           name: e.name,
           address: e.address,
-          type: e.type
+          type: e.type,
+          rating: e.rating,
+          photo: e.photo
         }
       }))
     }
@@ -102,7 +109,9 @@ export const placesRouter = router({
           id: e.id,
           name: e.name,
           address: e.address,
-          type: e.type
+          type: e.type,
+          rating: e.rating,
+          photo: e.photo
         }
       }))
     }
@@ -130,10 +139,29 @@ export const placesRouter = router({
           id: e.id,
           name: e.name,
           address: e.address,
-          type: e.type
+          type: e.type,
+          rating: e.rating,
+          photo: e.photo
         }
       }))
     }
     return geojson;
-  })
+  }),
+
+  onePlace: publicProcedure
+    .input(z.string())
+    .query(async ({ input }) => {
+      const res = await prisma.pet_friendly_places.findUnique({
+        where: {
+          id: input
+        }
+      });
+      return {
+        name: res?.name,
+        address: res?.address,
+        type: res?.type,
+        rating: res?.rating,
+        photo: res?.photo,
+      };
+    }),
 });

@@ -24,10 +24,10 @@ const main = async () => {
 
       details = res.data.result
 
-      // await updatePlacesCoordinates(details, place)
-      // await updatePlacesPhotos(details, place)
+      await updatePlacesCoordinates(details, place)
+      await updatePlacesPhotos(details, place)
       await updatePlacesCategory(details, place)
-      // await updatePlacesRating(details, place)
+      await updatePlacesRating(details, place)
 
     }catch (error){
       console.error(`Failed to fetch details for place ${place.seq}: ${error}`)
