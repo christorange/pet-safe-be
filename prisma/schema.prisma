@@ -8,27 +8,35 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              String              @id @default(uuid())
+  email           String              @unique
+  name            String?
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  userSavedPlaces user_saved_places[]
 }
 
 model pet_friendly_places {
-  id        Int      @id @default(autoincrement())
-  name      String
-  address   String
-  latitude  Float
-  longitude Float
-  type      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  seq             Int                 @default(autoincrement())
+  id              String              @id
+  name            String
+  address         String
+  latitude        Float               @default(0)
+  longitude       Float               @default(0)
+  type            String
+  photo           String              @default("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png")
+  googleCategory  String              @default("no category")
+  rating          String              @default("no ratings")
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  userSavedPlaces user_saved_places[]
 }
 
-model usersavedplaces {
-  saved_id Int       @id @default(autoincrement())
-  user_id  Int?
-  place_id Int       @default(autoincrement())
-  saved_at DateTime? @db.Date
+model user_saved_places {
+  saved_id Int                 @id @default(autoincrement())
+  user     User                @relation(fields: [user_id], references: [id])
+  user_id  String
+  place    pet_friendly_places @relation(fields: [place_id], references: [id])
+  place_id String
+  saved_at DateTime?           @db.Date
 }
