@@ -21,11 +21,12 @@ model pet_friendly_places {
   id              String              @id
   name            String
   address         String
-  latitude        Float?
-  longitude       Float?
+  latitude        Float               @default(0)
+  longitude       Float               @default(0)
   type            String
-  photo           String?
-  googleCategory  String?
+  photo           String              @default("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png")
+  googleCategory  String              @default("no category")
+  rating    String              @default("no ratings")
   createdAt       DateTime            @default(now())
   updatedAt       DateTime            @updatedAt
   userSavedPlaces user_saved_places[]

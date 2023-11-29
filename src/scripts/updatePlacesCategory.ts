@@ -1,40 +1,51 @@
 import prisma from "../utils/prisma";
-import { Client } from "@googlemaps/google-maps-services-js";
-import 'dotenv/config'
+import { PlaceData } from "@googlemaps/google-maps-services-js";
+import { pet_friendly_places } from "@prisma/client";
 
-const client = new Client({});
+export const updatePlacesCategory = async (
+  details: Partial<PlaceData>,
+  place: pet_friendly_places
+) => {
 
-export const updatePlacesCategory = async () => {
-  const places = await prisma.pet_friendly_places.findMany()
+  const types = details.types
+  try{
+    if (types && types.length){
+      const googleCategory = types[0].replace(/_/g, ' ')
 
-  for (const place of places){
-    try{
-      const res = await client.placeDetails({
-        params: {
-          place_id: place.id,
-          fields: ['types'],
-          key: process.env.GOOGLE_MAP_API as string
-        },
-        timeout: 2000
-      })
-      
-      const type = res.data.result.types
+      let type: string = 'Bar'
 
-      if (location){
-        await prisma.pet_friendly_places.update({
-          where: {
-            id: place.id
-          },
-          data: {
-            googleCategory: 
-          }
-        })
+      const restaurantKeywords = ['restaurant', 'food', 'meal', 'dinner', 'brunch']
+      const barKeywords = ['bar', 'liquor', 'pub', 'beer', 'wine', 'brewery', 'distillery']
+      const cafeKeywords = ['cafe', 'coffee', 'tea', 'bakery', 'boba', 'bubble tea']
+      const parkKeywords = ['park', 'garden', 'tourist attraction']
+
+      if (restaurantKeywords.some(category => googleCategory.includes(category))){
+        type = 'Restaurant'
+      }
+      if (barKeywords.some(category => googleCategory.includes(category))){
+        type = 'Bar'
+      }
+      if (cafeKeywords.some(category => googleCategory.includes(category))){
+        type = 'Cafe'
+      }
+      if (parkKeywords.some(category => googleCategory.includes(category))){
+        type = 'Park'
       }
 
-      console.log(`Updated place ${place.seq} coordinates.`)
-
-    }catch (error){
-      console.error(`Failed to update place ${place.seq} coordinates: ${error}`)
+      await prisma.pet_friendly_places.update({
+        where: {
+          id: place.id
+        },
+        data: {
+          googleCategory: googleCategory,
+          type: type
+        }
+      })
     }
+
+    console.log(`Updated place ${place.seq} category.`)
+
+  }catch (error){
+    console.error(`Failed to update place ${place.seq} category: ${error}`)
   }
 }
