@@ -23,7 +23,7 @@ model pet_friendly_places {
   address         String
   latitude        Float               @default(0)
   longitude       Float               @default(0)
-  type            String
+  type            String              @default("Bar")
   photo           String              @default("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png")
   googleCategory  String              @default("no category")
   rating          String              @default("no ratings")

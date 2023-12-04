@@ -26,7 +26,7 @@ export const updatePlacesCategory = async (
         type = 'Bar'
       }
       if (cafeKeywords.some(category => googleCategory.includes(category))){
-        type = 'Cafe'
+        type = 'Cafe/Boba'
       }
       if (parkKeywords.some(category => googleCategory.includes(category))){
         type = 'Park'
