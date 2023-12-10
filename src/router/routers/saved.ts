@@ -26,8 +26,8 @@ export const savedRouter = router({
   
     getByUserId: publicProcedure // haven't export for fe yet
     .input(z.string())
-    .query(async ({ input }) => {
-      return await prisma.user_saved_places.findMany({
+    .query( ({ input }) => {
+      return prisma.user_saved_places.findMany({
         where: {
           user_id: input, // Filtering based on the user_id
         },
