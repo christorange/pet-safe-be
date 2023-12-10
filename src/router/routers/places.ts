@@ -167,6 +167,7 @@ export const placesRouter = router({
         rating: res?.rating,
         photo: res?.photo,
         summary: res?.summary,
+        phone: res?.phone
       };
     }),
   
