@@ -187,4 +187,30 @@ export const placesRouter = router({
         hours: hours
       }
     }),
+
+    manyPlaces: publicProcedure
+  .input(z.array(z.string()))
+  .query(async ({ input }) => {
+    // Fetch details of multiple places using Promise.all
+    const placesDetails = await Promise.all(
+      input.map(async (id) => {
+        const res = await prisma.pet_friendly_places.findUnique({
+          where: {
+            id,
+          },
+        });
+        return {
+          name: res?.name,
+          address: res?.address,
+          type: res?.type,
+          rating: res?.rating,
+          photo: res?.photo,
+        };
+      })
+    );
+
+    return placesDetails;
+  }),
+    
+
 });
