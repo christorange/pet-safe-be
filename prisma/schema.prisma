@@ -27,7 +27,6 @@ model pet_friendly_places {
   googleCategory  String              @default("no category")
   photo           String              @default("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png")
   rating          String              @default("no ratings")
-  summary         String              @default(" ")
   createdAt       DateTime            @default(now())
   updatedAt       DateTime            @updatedAt
   userSavedPlaces user_saved_places[]

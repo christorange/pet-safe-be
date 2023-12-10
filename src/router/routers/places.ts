@@ -2,6 +2,10 @@ import { z } from 'zod';
 import { publicProcedure, router } from '../trpc';
 import prisma from '../../utils/prisma';
 import type { FeatureCollection } from 'geojson';
+import { Client } from '@googlemaps/google-maps-services-js';
+
+const client = new Client({});
+
 
 export const placesRouter = router({
   allPlaces: publicProcedure.query(async () => {
@@ -164,5 +168,22 @@ export const placesRouter = router({
         photo: res?.photo,
         summary: res?.summary,
       };
+    }),
+  
+  placeBusinessInfo: publicProcedure
+    .input(z.string())
+    .query(async ({ input }) => {
+      const res = await client.placeDetails({
+        params: {
+          place_id: input,
+          key: process.env.GOOGLE_MAP_API as string
+        }
+      })
+      const isOpen = res.data.result?.opening_hours?.open_now
+      const hours = res.data.result?.opening_hours?.weekday_text
+      return {
+        isOpen: isOpen,
+        hours: hours
+      }
     }),
 });
