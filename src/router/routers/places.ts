@@ -162,6 +162,7 @@ export const placesRouter = router({
         type: res?.type,
         rating: res?.rating,
         photo: res?.photo,
+        summary: res?.summary,
       };
     }),
 });

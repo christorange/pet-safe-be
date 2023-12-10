@@ -18,6 +18,7 @@ export const updatePlacesCategory = async (
       const barKeywords = ['bar', 'liquor', 'pub', 'beer', 'wine', 'brewery', 'distillery']
       const cafeKeywords = ['cafe', 'coffee', 'tea', 'bakery', 'boba', 'bubble tea']
       const parkKeywords = ['park', 'garden', 'tourist attraction']
+      const hotelKeywords = ['hotel', 'lodging', 'motel']
 
       if (restaurantKeywords.some(category => googleCategory.includes(category))){
         type = 'Restaurant'
@@ -30,6 +31,9 @@ export const updatePlacesCategory = async (
       }
       if (parkKeywords.some(category => googleCategory.includes(category))){
         type = 'Park'
+      }
+      if (hotelKeywords.some(category => googleCategory.includes(category))){
+        type = 'Hotel'
       }
 
       await prisma.pet_friendly_places.update({

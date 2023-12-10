@@ -4,6 +4,7 @@ import { updatePlacesCoordinates } from "./updatePlacesCoordinates"
 import { updatePlacesPhotos } from "./updatePlacesPhotos"
 import { updatePlacesCategory } from "./updatePlacesCategory";
 import { updatePlacesRating } from "./updatePlaceRating";
+import { updatePlacesSummary } from "./updatePlaceSummary";
 import 'dotenv/config'
 
 const client = new Client({});
@@ -28,6 +29,7 @@ const main = async () => {
       await updatePlacesPhotos(details, place)
       await updatePlacesCategory(details, place)
       await updatePlacesRating(details, place)
+      await updatePlacesSummary(details, place)
 
     }catch (error){
       console.error(`Failed to fetch details for place ${place.seq}: ${error}`)

@@ -17,16 +17,17 @@ model User {
 }
 
 model pet_friendly_places {
-  seq             Int                 @default(autoincrement())
   id              String              @id
   name            String
   address         String
   latitude        Float               @default(0)
   longitude       Float               @default(0)
-  type            String              @default("Bar")
-  photo           String              @default("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png")
+  type            String
+  seq             Int                 @default(autoincrement())
   googleCategory  String              @default("no category")
+  photo           String              @default("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png")
   rating          String              @default("no ratings")
+  summary         String              @default(" ")
   createdAt       DateTime            @default(now())
   updatedAt       DateTime            @updatedAt
   userSavedPlaces user_saved_places[]
@@ -34,9 +35,9 @@ model pet_friendly_places {
 
 model user_saved_places {
   saved_id Int                 @id @default(autoincrement())
-  user     User                @relation(fields: [user_id], references: [id])
   user_id  String
-  place    pet_friendly_places @relation(fields: [place_id], references: [id])
   place_id String
   saved_at DateTime?           @db.Date
+  place    pet_friendly_places @relation(fields: [place_id], references: [id])
+  user     User                @relation(fields: [user_id], references: [id])
 }
