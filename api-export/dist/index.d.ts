@@ -226,6 +226,31 @@ declare const appRouter: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<
             type: string | undefined;
             rating: string | undefined;
             photo: string | undefined;
+            summary: any;
+            phone: any;
+        }>;
+        placeBusinessInfo: _trpc_server.BuildProcedure<"query", {
+            _config: _trpc_server.RootConfig<{
+                ctx: {
+                    req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                    res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+                };
+                meta: object;
+                errorShape: _trpc_server.DefaultErrorShape;
+                transformer: typeof superjson.default;
+            }>;
+            _meta: object;
+            _ctx_out: {
+                req: fastify.FastifyRequest<fastify.RouteGenericInterface, fastify.RawServerDefault, http.IncomingMessage, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown, fastify.FastifyBaseLogger, fastify_types_type_provider.ResolveFastifyRequestType<fastify.FastifyTypeProviderDefault, fastify.FastifySchema, fastify.RouteGenericInterface>>;
+                res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
+            };
+            _input_in: string;
+            _input_out: string;
+            _output_in: typeof _trpc_server.unsetMarker;
+            _output_out: typeof _trpc_server.unsetMarker;
+        }, {
+            isOpen: boolean | undefined;
+            hours: string[] | undefined;
         }>;
         manyPlaces: _trpc_server.BuildProcedure<"query", {
             _config: _trpc_server.RootConfig<{
@@ -404,12 +429,12 @@ declare const appRouter: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<
                 res: fastify.FastifyReply<fastify.RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, fastify.RouteGenericInterface, unknown, fastify.FastifySchema, fastify.FastifyTypeProviderDefault, unknown>;
             };
             _input_in: {
-                user_id: string;
                 place_id: string;
+                user_id: string;
             };
             _input_out: {
-                user_id: string;
                 place_id: string;
+                user_id: string;
             };
             _output_in: typeof _trpc_server.unsetMarker;
             _output_out: typeof _trpc_server.unsetMarker;
