@@ -26,10 +26,10 @@ const main = async () => {
 
       details = res.data.result
 
-      // await updatePlacesCoordinates(details, place)
-      // await updatePlacesPhotos(details, place)
-      // await updatePlacesCategory(details, place)
-      // await updatePlacesRating(details, place)
+      await updatePlacesCoordinates(details, place)
+      await updatePlacesPhotos(details, place)
+      await updatePlacesCategory(details, place)
+      await updatePlacesRating(details, place)
       await updatePlacesSummary(details, place)
       await updatePlacesPhone(details, place)
 

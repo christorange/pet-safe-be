@@ -226,8 +226,8 @@ declare const appRouter: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<
             type: string | undefined;
             rating: string | undefined;
             photo: string | undefined;
-            summary: any;
-            phone: any;
+            summary: string | null | undefined;
+            phone: string | null | undefined;
         }>;
         placeBusinessInfo: _trpc_server.BuildProcedure<"query", {
             _config: _trpc_server.RootConfig<{
