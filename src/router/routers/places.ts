@@ -152,6 +152,36 @@ export const placesRouter = router({
     return geojson;
   }),
 
+  hotels: publicProcedure.query(async () => {
+    const res = await prisma.pet_friendly_places.findMany({
+      where: {
+        type: {
+          equals: 'Hotel'
+        }
+      }
+    });
+
+    const geojson: FeatureCollection = {
+      type: "FeatureCollection",
+      features: res.map(e=>({
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: [e.longitude as number, e.latitude as number]
+        },
+        properties: {
+          id: e.id,
+          name: e.name,
+          address: e.address,
+          type: e.type,
+          rating: e.rating,
+          photo: e.photo
+        }
+      }))
+    }
+    return geojson;
+  }),
+
   onePlace: publicProcedure
     .input(z.string())
     .query(async ({ input }) => {
